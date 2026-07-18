@@ -2,18 +2,19 @@ memoria = {}
 
 def menu():
     
-    print("||=========================================||")
+    print(f"||{41*"="}||")
     print("|| =*= Sistema de Contatos do Wallace! =*= ||")
-    print("||=========================================||")
+    print(f"||{41*"="}||")
     print("||     1 - Adicionar um Contato            ||")
     print("||     2 - Buscar um Contato               ||")
     print("||     3 - Listar todos os Contatos        ||")
     print("||     4 - Excluir contato                 ||")
     print("||     5 - Modificar número de usuario     ||")
+    print("||     6 - Alterar e-mail                  ||")
     print("||     0 - Sair                            ||")
-    print("||=========================================||")
+    print(f"||{41*"="}||")
     print("||         🤖🤖🤖🤖🤖🤖🤖🤖                ||")
-    print("||=========================================||")
+    print(f"||{41*"="}||")
     
 
 def adicionar_contato():
@@ -93,6 +94,28 @@ def alterar_numero():
              print("Contato não encontrado.")
 
 
+def alterar_e_mail():
+     nome = input("Nome de contato:")
+     nome_contato = (nome,)
+     if nome_contato in memoria:
+          novo_e_mail = input("Novo E-mail:")
+          while True:
+              confirmar_alteracao = input("Confirmar alteração: S/N?").strip().lower()
+              if confirmar_alteracao == "s":
+                  memoria[nome_contato]["E-mail"] = novo_e_mail
+                  print(f'E-mail alterado com sucesso!')
+                  break
+              elif confirmar_alteracao == "n":
+                   print("E-mail não modificado!")
+                   break
+              else:
+                   print("Digite apenas S ou N.")
+
+     else:
+          print("Contato não encontrado.") 
+     
+       
+
 
 while True:
     menu()
@@ -105,10 +128,15 @@ while True:
 
     elif opcao == 3:
          Listar_todos_Contatos()
+
     elif opcao == 4:
          Excluir_contato()
+
     elif opcao == 5:
           alterar_numero()
+
+    elif opcao == 6:
+         alterar_e_mail()
          
     elif opcao == 0:
          print("Sistema encerrado...")

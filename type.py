@@ -11,6 +11,7 @@ def menu():
     print("||     4 - Excluir contato                 ||")
     print("||     5 - Modificar número de usuario     ||")
     print("||     6 - Alterar e-mail                  ||")
+    print("||     7 - Alterar nome                    ||")
     print("||     0 - Sair                            ||")
     print(f"||{41*"="}||")
     print("||         🤖🤖🤖🤖🤖🤖🤖🤖                ||")
@@ -52,13 +53,13 @@ def  buscar_um_contato():
      else:
          print("Contato não salvo!")
 
-def Listar_todos_Contatos():   #confere
+def listar_todos_Contatos():   #confere
      for nome, informacoes in memoria.items():
              print(f'Nome: {nome[0]}')
              print(f'Numero:{ informacoes["Numero"]}')
              print(f'E-mail:{ informacoes["E-mail"]}')
 
-def Excluir_contato():
+def excluir_contato():
      buscar_contato = input("Nome do contato:")
      contato = (buscar_contato,)                         #confere
      if contato in memoria:
@@ -114,7 +115,25 @@ def alterar_e_mail():
      else:
           print("Contato não encontrado.") 
      
-       
+def alterar_nome():
+     nome = input("Nome de usuario:")
+     nome_usuario = (nome,)
+     if nome_usuario in memoria:
+          print(f'Nome atual{nome_usuario[0]}')
+          informacoes = memoria[nome_usuario]
+
+          novo_nome = input("Novo nome de usuario:")
+
+          nova_chave = (novo_nome,)
+
+          memoria[nova_chave] = informacoes
+
+          memoria.pop(nome_usuario)
+
+          print("Nome alterado com sucesso!")
+
+     else:
+          print("Contato não encontrado!") 
 
 
 while True:
@@ -127,17 +146,20 @@ while True:
         buscar_um_contato()
 
     elif opcao == 3:
-         Listar_todos_Contatos()
+         listar_todos_Contatos()
 
     elif opcao == 4:
-         Excluir_contato()
+         excluir_contato()
 
     elif opcao == 5:
           alterar_numero()
 
     elif opcao == 6:
          alterar_e_mail()
-         
+
+    elif opcao == 7:
+         alterar_nome()
+
     elif opcao == 0:
          print("Sistema encerrado...")
          break

@@ -12,6 +12,7 @@ def menu():
     print("||     5 - Modificar número de usuario     ||")
     print("||     6 - Alterar e-mail                  ||")
     print("||     7 - Alterar nome                    ||")
+    print("||     8 - Quantidade de contatos          ||")
     print("||     0 - Sair                            ||")
     print(f"||{41*"="}||")
     print("||         🤖🤖🤖🤖🤖🤖🤖🤖                ||")
@@ -135,7 +136,18 @@ def alterar_nome():
      else:
           print("Contato não encontrado!") 
 
+def quantidade_de_contatos():
+    print("\n====== Contatos salvos ======")
 
+    if len(memoria) == 0:
+        print(f"Quantidade: {len(memoria)}")
+        print("Não há nenhum contato salvo.")
+    else:
+        print(f"Quantidade: {len(memoria)}")
+
+    print("=" * 28)
+
+    
 while True:
     menu()
     opcao = pesquisar()
@@ -159,6 +171,9 @@ while True:
 
     elif opcao == 7:
          alterar_nome()
+
+    elif opcao == 8:
+         quantidade_de_contatos()
 
     elif opcao == 0:
          print("Sistema encerrado...")
